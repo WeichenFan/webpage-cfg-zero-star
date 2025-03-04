@@ -1,92 +1,502 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CFG-Zero★: Improved Classifier-Free Guidance for Flow Matching Models</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #1e1e2f;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .section {
-            margin: 20px 0;
-        }
-        .section h2 {
-            border-bottom: 2px solid #1e1e2f;
-            padding-bottom: 5px;
-        }
-        .media-container {
-            text-align: center;
-        }
-        video, img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .authors {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 18px;
-            color: #555;
-        }
-        .authors p {
-            margin: 5px 0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>RepVideo: Rethinking Cross-Layer Representation for Video Generation</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+
 </head>
 <body>
-    <header>CFG-Zero★: Improved Classifier-Free Guidance for Flow Matching Models</header>
-    <div class="container">
-        <div class="authors">
-            <p><strong>Authors:</strong> Weichen Fan<sup>1</sup>, Amber Yijia Zheng<sup>2</sup>, Raymond A. Yeh<sup>2</sup>, Ziwei Liu<sup>1,</sup><sup>✉</sup></p>
-            <p><sup>1</sup>S-Lab, Nanyang Technological University</p>
-            <p><sup>2</sup>Department of Computer Science, Purdue University</p>
-            <p>Email: weichen.fan@u.nus.edu, {zheng709, rayyeh}@purdue.edu, ziwei.liu@ntu.edu.sg</p>
-        </div>
-        <div class="section">
-            <h2>Abstract</h2>
-            <p>Brief summary of your research goes here...</p>
-        </div>
-        <div class="section">
-            <h2>Methodology</h2>
-            <p>Describe the methods used in your research...</p>
-        </div>
-        <div class="section">
-            <h2>Results</h2>
-            <div class="media-container">
-                <img src="your-image.jpg" alt="Research Image">
-                <video controls>
-                    <source src="your-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">RepVideo: Rethinking Cross-Layer Representation for Video Generation</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://chenyangsi.top/" target="_blank">Chenyang Si</a><sup>1†</sup>,</span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=ORlELG8AAAAJ" target="_blank">Weichen Fan</a><sup>1†</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=FkkaUgwAAAAJ&hl=en" target="_blank">Zhengyao Lv</a><sup>2</sup>,</span>
+                  <span class="author-block">
+                  <a href="https://ziqihuangg.github.io/" target="_blank">Ziqi Huang</a><sup>1</sup>,</span>
+                  <span class="author-block">
+                  <a href="https://mmlab.siat.ac.cn/yuqiao" target="_blank">Yu Qiao</a><sup>2</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://liuziwei7.github.io/" target="_blank">Ziwei Liu</a><sup>1✉</sup>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">S-Lab, Nanyang Technological University<sup>1</sup> &nbsp;&nbsp;&nbsp;&nbsp; Shanghai Artificial Intelligence Laboratory <sup>2</sup> </span>
+                    <span class="eql-cntrb"><small><br><sup>†</sup>Equal contribution.&nbsp;&nbsp;&nbsp;&nbsp;<sup>✉</sup>Corresponding Author.</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2501.08994" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <!-- Supplementary PDF link -->
+<!--                     <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span> -->
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/Vchitect/RepVideo" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2501.08994" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
             </div>
-            <p>Explain your research findings...</p>
+          </div>
         </div>
-        <div class="section">
-            <h2>Conclusion</h2>
-            <p>Summarize the outcomes and implications of your work...</p>
-        </div>
+      </div>
     </div>
-</body>
-</html>
+  </div>
+</section>
+
+
+<!-- 
+<section class="hero teaser" style="margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; position: relative;">
+  <div class="hero-body" style="margin: 0; padding: 0; width: 100%; height: 100%;">
+    <video poster="" id="tree" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: contain;">
+      <source src="static/videos/output_n8.mp4" type="video/mp4">
+    </video>
+  </div>
+</section> -->
+<!-- <section class="hero teaser" style="margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; position: relative;">
+  <div class="hero-body" style="margin: 0; padding: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+    <video poster="" id="tree" autoplay muted loop playsinline style="width: 100%; height: auto; max-height: 100%; object-fit: contain;">
+      <source src="static/videos/output_n8.mp4" type="video/mp4">
+    </video>
+  </div>
+</section> -->
+<!-- <section class="hero teaser" style="margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; position: relative;">
+  <div class="hero-body" style="margin: 0; padding: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+    <video poster="" id="tree" autoplay muted loop playsinline style="width: 100%; height: auto; object-fit: contain; object-position: center;">
+      <source src="static/videos/output_n8.mp4" type="video/mp4">
+    </video>
+  </div>
+</section> -->
+<section class="hero teaser" style="margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; position: relative;">
+  <div class="hero-body" style="margin: 0; padding: 0; width: 100%; height: 100%; position: relative;">
+    <video poster="" id="tree" autoplay muted loop playsinline style="position: absolute; top: 50%; left: 50%; width: 100%; height: auto; transform: translate(-50%, -50%);">
+      <source src="static/videos/output_n8.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Video generation has achieved remarkable progress with the introduction of diffusion models, which have significantly improved the quality of generated videos. However, recent research has primarily focused on scaling up model training, while offering limited insights into the direct impact of representations on the video generation process. In this paper, we initially investigate the characteristics of features in intermediate layers, finding substantial variations in attention maps across different layers. These variations lead to unstable semantic representations and contribute to cumulative differences between features, which ultimately reduce the similarity between adjacent frames and negatively affect temporal coherence.
+            To address this, we propose RepVideo, an enhanced representation framework for text-to-video diffusion models. By accumulating features from neighboring layers to form enriched representations, this approach captures more stable semantic information. These enhanced representations are then used as inputs to the attention mechanism, thereby improving semantic expressiveness while ensuring feature consistency across adjacent frames. Extensive experiments demonstrate that our RepVideo not only significantly enhances the ability to generate accurate spatial appearances, such as capturing complex spatial relationships between multiple objects, but also improves temporal consistency in video generation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- New section: Method -->
+<section >
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-left">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="text-align: center;">Methodology</h2> <!-- 一级标题 -->
+        
+        <p>
+          We investigate the transformer representations in video diffusion models, revealing that substantial variations in attention maps across layers lead to fragmented spatial semantics and reduced temporal consistency, which negatively impact video quality.
+          Further, we propose RepVideo, a framework that leverages a feature cache module and a gating mechanism to aggregate and stabilize intermediate representations, enhancing both spatial detail and temporal coherence.
+        </p>
+        <!-- Add an image to support the explanation -->
+        <figure class="image" style="text-align: center; margin: 20px 0;">
+          <img src="static/images/method.jpg" alt="Attention difference comparison graph">
+        </figure>
+
+        
+        <h3 class="title is-4" style="text-align: center;">How RepVideo Improves Spatial Appearance.</h3> <!-- 一级标题 -->
+        <p>
+          RepVideo model consistently captures richer semantic information and maintains more coherent spatial details as the layers deepen.
+        </p>
+        <figure class="image" style="text-align: center; margin: 20px 0;">
+          <img src="static/images/rep.png" alt="Attention difference comparison graph">
+        </figure>
+
+        <p>
+          The attention maps of RepVideo highlight subject boundaries more clearly than CogVideoX, showcasing that aggregated features strengthen spatial regions. This reduces inter-layer variability, preserves critical spatial information, and improves the model’s ability to generate visually consistent scenes aligned with input prompts.
+        </p>
+        <figure class="image" style="text-align: center; margin: 20px 0;">
+          <img src="static/images/rep2.png" alt="Attention difference comparison graph">
+        </figure>
+
+        <h3 class="title is-4" style="text-align: center;">How RepVideo Improves Temporal Appearance.</h3> <!-- 一级标题 -->
+
+        <p>
+          RepVideo achieves consistently higher cosine similarity scores across all layers compared to CogVideoX-2B. As a result, RepVideo produces videos with smooth transitions and coherent motion, even in complex scenarios involving dynamic objects or environments.
+        </p>
+        <figure class="image" style="text-align: center; margin: 20px 0;">
+          <img src="static/images/time.png" alt="Attention difference comparison graph">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New section: Method -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-left">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="text-align: center;">Results</h2> <!-- 一级标题 -->
+        
+        <h3 class="title is-4" style="text-align: center;">Quantitative Evaluation</h3> <!-- 二级标题 -->
+        <p>
+           Table I presents the Total Score and key metrics: Motion Smoothness (temporal stability), Object Class and Multiple Objects (diversity and clarity), and Spatial Relationship (coherence in positioning). Human evaluations (Table II) show our model surpasses state-of-the-art methods, with a win ratio over 50% across all metrics, highlighting superior semantic alignment, smoother transitions, and better visual quality.
+        </p>
+        <!-- Add an image to support the explanation -->
+        <figure class="image" style="text-align: center; margin: 20px 0;">
+          <img src="static/images/table.png" alt="Attention difference comparison graph">
+        </figure>
+
+        <h3 class="title is-4" style="text-align: center;">Qualitative Evaluation</h3> <!-- 二级标题 -->
+        <p>The comparison of our visual results with CogVideoX-2B ( <span style="color: red;">Left: CogVideoX-2B</span>, <span style="color: red;">Right: RepVideo</span>.).</p>
+        <!-- Video carousel -->
+        <section class="hero is-small">
+          <div class="hero-body">
+            <div class="container" style="max-width: 1200px; margin: 0 auto;"> <!-- 限制最大宽度 -->
+              <div id="results-carousel" class="carousel results-carousel" style="display: flex; justify-content: space-between; overflow: hidden; width: 100%; height: auto;">
+                
+                <div class="item" style="flex-shrink: 0; flex-grow: 1; margin: 0 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <video poster="" id="video1" autoplay playsinline muted loop style="width: 100%; height: auto; display: block;">
+                    <source src="static/videos/19.mp4" type="video/mp4">
+                  </video>
+                  <div class="caption" style="text-align: center; margin-top: 10px; font-size: 16px; color: black;">
+                    Yellow and black tropical fish dart through the sea.
+                  </div>
+                </div>
+                
+                <div class="item" style="flex-shrink: 0; flex-grow: 1; margin: 0 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <video poster="" id="video2" autoplay playsinline muted loop style="width: 100%; height: auto; display: block;">
+                    <source src="static/videos/23.mp4" type="video/mp4">
+                  </video>
+                  <div class="caption" style="text-align: center; margin-top: 10px; font-size: 16px; color: black;">
+                    3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest.
+                  </div>
+                </div>
+                
+                <div class="item" style="flex-shrink: 0; flex-grow: 1; margin: 0 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <video poster="" id="video3" autoplay playsinline muted loop style="width: 100%; height: auto; display: block;">
+                    <source src="static/videos/26.mp4" type="video/mp4">
+                  </video>
+                  <div class="caption" style="text-align: center; margin-top: 10px; font-size: 16px; color: black;">
+                    A corgi vlogging itself in tropical Maui.
+                  </div>
+                </div>
+
+                <div class="item" style="flex-shrink: 0; flex-grow: 1; margin: 0 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <video poster="" id="video4" autoplay playsinline muted loop style="width: 100%; height: auto; display: block;">
+                    <source src="static/videos/27.mp4" type="video/mp4">
+                  </video>
+                  <div class="caption" style="text-align: center; margin-top: 10px; font-size: 16px; color: black;">
+                  A person clad in a space suit with a helmet and equipped with a chest light and arm device is seen closely examining and interacting with a variety of plants in a lush, indoor botanical setting.
+                  </div>
+                </div>
+
+                <div class="item" style="flex-shrink: 0; flex-grow: 1; margin: 0 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <video poster="" id="video4" autoplay playsinline muted loop style="width: 100%; height: auto; display: block;">
+                    <source src="static/videos/vid1.mp4" type="video/mp4">
+                  </video>
+                  <div class="caption" style="text-align: center; margin-top: 10px; font-size: 16px; color: black;">
+                  An extreme close-up of an gray-haired man with a beard in his 60s, he is deep in thought pondering the history of the universe as he sits at a cafe in Paris, his eyes focus on people offscreen as they walk as he sits mostly motionless, he is dressed in a wool coat suit coat with a button-down shirt , he wears a brown beret and glasses and has a very professorial appearance, the lighting is very cinematic with the golden light and the Parisian streets and city in the background.
+                  </div>
+                </div>
+
+                <div class="item" style="flex-shrink: 0; flex-grow: 1; margin: 0 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <video poster="" id="video4" autoplay playsinline muted loop style="width: 100%; height: auto; display: block;">
+                    <source src="static/videos/vid2.mp4" type="video/mp4">
+                  </video>
+                  <div class="caption" style="text-align: center; margin-top: 10px; font-size: 16px; color: black;">
+                  The video is a 3D animation of a moon-like object approaching Earth. The moon-like object is gray with a rough texture, and it appears to be made of rock or metal. The Earth is depicted in a realistic manner, with a blue ocean, green landmasses, and white clouds. 
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End video carousel -->
+
+        <!-- <p>More visual results.</p> -->
+        <h3 class="title is-4" style="text-align: center;">More visual results</h3> <!-- 二级标题 -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="video-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
+        
+            <!-- First video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/s7.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A litter of golden retriever puppies playing in snow. Their heads pop out of snow, covered in.</p>
+            </div>
+
+            <!-- Second video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/s3.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A serene waterfall cascading down moss-covered rocks, its soothing sound creating a harmonious symphony with nature.</p>
+            </div>
+
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/182_000000.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A lone adventurer, clad in a bright red life jacket and a wide-brimmed hat, paddles a sleek, yellow kayak through a serene, crystal-clear lake surrounded by towering pine trees and majestic mountains.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/s5.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">Extreme close up of a 24 year old woman’s eye blinking, standing in Marrakech during magic hour, cinematic film shot in 70mm, depth of field, vivid colors, cinematic</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/1_000000.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">Camera follows behind a white vintage SUV with a black roof rack as it speeds up a steep dirt road surrounded by pine trees on a steep mountain slope, dust kicks up from its tires, sunlight shines on the SUV as it speeds along the dirt road, casting a warm glow over scene</p>
+            </div>
+
+            <!-- Third video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/s4.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A serene waterfall cascading down moss-covered rocks, its soothing sound creating a harmonious symphony with nature. A soaring drone footage captures the majestic beauty of a coastal cliff, its red and yellow stratified rock faces rich in color and against the vibrant turquoise of the sea. Seabirds can be seen taking flight around the cliff's precipices.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/156_000000.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A sleek, black motorcycle with chrome accents stands parked on a sunlit pier, its polished surface gleaming under the bright sky. Nearby, aluxurious white yacht with elegant lines is moored, gently bobbing on the calm, azure waters.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/67_000000.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">In the serene Arizona desert, a colossal stone bridge arches gracefully across a rugged canyon, its weathered surface blending seamlessly with the surrounding red rock formations. The scene is bathed in the warm, golden light of the setting sun, casting long shadows and highlighting the intricate textures of the canyon walls</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/21_000000.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A vintage red phone booth stands alone on a cobblestone street, bathed in the soft glow of a nearby streetlamp. The booth's glass panels reflect the dim light, revealing a glimpse of the old rotary phone inside. Surrounding the booth, ivy climbs up the nearby brick wall, adding atouch of nature to the urban setting.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/17_000000.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A serene indoor library bathed in soft, golden light from tall, arched windows, casting gentle shadows on the polished wooden floor. Rows of towering bookshelves, filled with leather-bound volumes and colorful spines, create a labyrinth of knowledge.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t26.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video features a mesmerizing view of a galaxy, with a central bright white star at the center, surrounded by a swirling pattern of blue and purple hues. The galaxy appears to be in motion, with the stars and dust particles creating a dynamic and captivating visual effect. The colors are vibrant, and the overall effect is one of awe and wonder, reminiscent of the vastness and beauty of the cosmos.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t13.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video captures a serene winter scene with a prominent church structure situated in the center of a vast snow-covered field. The church, with its white walls and a red roof, stands out against the white snow. The surrounding landscape is dominated by towering mountains, covered in a thick layer of snow, and dense forests. The sky is clear and blue, indicating a sunny day. The camera pans slowly from left to right, providing a comprehensive view of the church and its surroundings.</p>
+            </div>
+
+
+             <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t31.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video captures a serene beach scene during sunset. The sky is painted with hues of orange and purple, and the sun is partially visible, casting a warm glow on the water. The waves are the main focus, with one large wave in the foreground and smaller waves in the background. The wave in the foreground is a deep blue-green color, with white foam at the crest, and it is breaking on the sandy beach. The water is calm and smooth, with no other objects or people visible in the scene.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t33.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">Push upward at a low angle, slowly look up, a tiger with intense, fiery eyes, surrounded by flames. The tiger's fur glows with the reflection of the fire, emphasizing its fierce expression and strong presence. The flames frame the tiger, creating a dramatic, almost mythical atmosphere that highlights its raw power and intensity.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t12.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video features a single parrot with a vibrant orange head, a yellow body, and green wings and tail. The parrot is perched on a metal bar, which appears to be part of a railing or fence. The background is a blurred view of greenery and buildings, suggesting an outdoor setting. The parrot's movements are minimal, with occasional head turns and slight body shifts.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t32.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">A dramatic video scene featuring a human heart engulfed in intense flames, suspended against a dark, smoky background. The fire wraps around the heart, with bright orange and yellow flames dancing and crackling, highlighting the heart's texture and shape. The fiery effect creates a powerful and symbolic image, evoking themes of passion, intensity, and raw emotion.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t28.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video begins with a dark, purple background, and as it progresses, a series of small, glowing particles appear, gradually forming the shape of a heart. The particles are predominantly pink and red, and they seem to be floating in a three-dimensional space. As the heart shape becomes more defined, the particles become denser and more concentrated around the heart's outline. The heart appears to be glowing with a soft light, and the particles seem to be emanating from the heart's center, creating a sense of depth and movement. The video ends with the fully formed heart, surrounded by a halo of glowing particles, against the same dark, purple background.</p>
+            </div>
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t18.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video presents a serene landscape at sunrise. The sky is painted with hues of orange and pink, with the sun appearing as a large, glowing orb. The mountains in the background are silhouetted against the sky, with their peaks touching the clouds. The foreground features a calm lake reflecting the sky's colors, with a few trees and rocks scattered around its edges. The water is still, and the overall atmosphere is peaceful and tranquil.</p>
+            </div>
+
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t29.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video begins with a plain white background, and as it progresses, a black circle appears in the center. Subsequently, a dog character with a blue body, white face, brown ears, and a pink nose emerges from the circle. The dog is adorned with a multicolored scarf around its neck, and as the video continues, it is surrounded by stars and heart-shaped balloons. The dog's facial expressions change slightly throughout the video, and the background remains consistently white.</p>
+            </div>
+
+
+            <!-- Fourth video -->
+            <div class="video-item" style="width: 23%; vertical-align: top;">
+                <video src="static/videos/t11.mp4" autoplay loop muted style="width: 100%;"></video>
+                <p style="word-wrap: break-word; min-height: 50px;">The video features a single, small dog with a light brown coat, sitting on a snow-covered rock. The dog is wearing a red and white Santa hat, and its eyes are wide open, giving it a curious and alert expression. The background is a serene winter landscape with snow-covered trees and a soft, warm glow from the setting sun.</p>
+            </div>
+
+
+                
+        </div>
+
+    <!-- Add more videos as needed -->
+  </div>
+</section>
+
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{si2025repvideo,
+        author    = {Si, Chenyang and Fan, Weichen and Lv, Zhengyao and Huang, Ziqi and Qiao, Yu and Liu, Ziwei},
+        title     = {RepVideo: Rethinking Cross-Layer Representation for Video Generation},
+        booktitle = {arXiv preprint},
+        year      = {2025},
+      }</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
