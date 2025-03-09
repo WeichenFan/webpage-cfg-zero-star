@@ -128,7 +128,8 @@
 
 
 <div class="image-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
-    <!-- Index list for selection (Backend-defined) -->
+    <div id="gallery-container" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;"></div>
+    
     <script>
         const selectedIndices = [2, 5, 8, 10]; // Modify this list in the backend to control displayed images
         
@@ -141,9 +142,9 @@
                 selectedIndices.forEach(num => {
                     if (num > 0 && num <= prompts.length) {
                         galleryHTML += `
-                            <div class="image-item" style="width: 49%; vertical-align: top;">
-                                <img src="static/images/comp/comp_${num}.png" style="width: 100%;">
-                                <p style="word-wrap: break-word; min-height: 50px;">${prompts[num - 1]}</p>
+                            <div class="image-item" style="width: 49%; display: inline-block; vertical-align: top;">
+                                <img src="static/images/comp/comp_${num}.png" style="width: 100%; display: block;">
+                                <p style="word-wrap: break-word; min-height: 50px; text-align: center;">${prompts[num - 1]}</p>
                             </div>
                         `;
                     }
@@ -153,8 +154,6 @@
             })
             .catch(error => console.error("Error loading prompts:", error));
     </script>
-    
-    <div id="gallery-container"></div>
 </div>
 
 
