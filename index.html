@@ -128,8 +128,9 @@
 
 
 <div class="image-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
+    <!-- Index list for selection (Backend-defined) -->
     <script>
-        const selectedIndices = [2, 5, 8, 10]; // Backend-defined list of indices to display
+        const selectedIndices = [2, 5, 8, 10]; // Modify this list in the backend to control displayed images
         
         fetch("static/eval.txt")
             .then(response => response.text())
@@ -148,12 +149,13 @@
                     }
                 });
                 
-                document.write(galleryHTML);
+                document.getElementById("gallery-container").innerHTML = galleryHTML;
             })
             .catch(error => console.error("Error loading prompts:", error));
     </script>
+    
+    <div id="gallery-container"></div>
 </div>
-
 
 
 <div class="video-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
