@@ -130,31 +130,24 @@
 <div class="image-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
     <!-- Dynamically generated image items -->
     <script>
-        const prompts = [
-            "A vibrant neon city skyline at midnight, reflected on wet streets under a light rain",
-            "A serene mountain lake at dawn, with mist rising over calm waters and pine trees",
-            "A whimsical fairy-tale cottage in the woods, surrounded by glowing mushrooms and fireflies",
-            "A towering cyberpunk robot standing in a busy futuristic marketplace",
-            "An ancient castle perched on a cliff, under a dramatic stormy sky with lightning strikes",
-            "A photorealistic close-up portrait of a golden retriever wearing glasses and a bow tie",
-            "A surreal dreamscape filled with floating islands connected by rope bridges",
-            "A majestic space station orbiting Jupiter, painted in an 80s retro sci-fi style",
-            "A detailed steampunk airship sailing across a sunset sky with mechanical gears showing",
-            "A mysterious underwater city with bioluminescent corals and towering glass domes"
-        ];
-        
-        let galleryHTML = "";
-        
-        for (let i = 1; i <= prompts.length; i++) {
-            galleryHTML += `
-                <div class="image-item" style="width: 49%; vertical-align: top;">
-                    <img src="static/images/comp/comp_${i}.png" style="width: 100%;">
-                    <p style="word-wrap: break-word; min-height: 50px;">${prompts[i - 1]}</p>
-                </div>
-            `;
-        }
-        
-        document.write(galleryHTML);
+        fetch("static/eval.txt")
+            .then(response => response.text())
+            .then(text => {
+                const prompts = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                let galleryHTML = "";
+                
+                prompts.forEach((prompt, index) => {
+                    galleryHTML += `
+                        <div class="image-item" style="width: 49%; vertical-align: top;">
+                            <img src="static/images/comp/comp_${index + 1}.png" style="width: 100%;">
+                            <p style="word-wrap: break-word; min-height: 50px;">${prompt}</p>
+                        </div>
+                    `;
+                });
+                
+                document.write(galleryHTML);
+            })
+            .catch(error => console.error("Error loading prompts:", error));
     </script>
 </div>
 
