@@ -128,21 +128,24 @@
 
 
 <div class="image-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
-    <!-- Dynamically generated image items -->
     <script>
+        const selectedIndices = [2, 5, 8, 10]; // Backend-defined list of indices to display
+        
         fetch("static/eval.txt")
             .then(response => response.text())
             .then(text => {
                 const prompts = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
                 let galleryHTML = "";
                 
-                prompts.forEach((prompt, index) => {
-                    galleryHTML += `
-                        <div class="image-item" style="width: 49%; vertical-align: top;">
-                            <img src="static/images/comp/comp_${index + 1}.png" style="width: 100%;">
-                            <p style="word-wrap: break-word; min-height: 50px;">${prompt}</p>
-                        </div>
-                    `;
+                selectedIndices.forEach(num => {
+                    if (num > 0 && num <= prompts.length) {
+                        galleryHTML += `
+                            <div class="image-item" style="width: 49%; vertical-align: top;">
+                                <img src="static/images/comp/comp_${num}.png" style="width: 100%;">
+                                <p style="word-wrap: break-word; min-height: 50px;">${prompts[num - 1]}</p>
+                            </div>
+                        `;
+                    }
                 });
                 
                 document.write(galleryHTML);
@@ -150,6 +153,7 @@
             .catch(error => console.error("Error loading prompts:", error));
     </script>
 </div>
+
 
 
 <div class="video-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
