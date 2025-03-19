@@ -126,7 +126,25 @@
   </div>
 </section>
 
-<h1 style="text-align: center;">Comparisons of Text-to-Image Generation</h1>
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Classifier-Free Guidance (CFG) is a widely adopted technique in diffusion/flow models to improve image fidelity and controllability. In this work, we first analytically study the effect of CFG on flow matching models trained on Gaussian mixtures where the ground-truth flow can be derived. We observe that in the early stages of training, when the flow estimation is inaccurate, CFG directs samples toward incorrect trajectories. Building on this observation, we propose CFG-Zero*, an improved CFG with two contributions: (a) optimized scale, where a scalar is optimized to correct for the inaccuracies in the estimated velocity, hence the * in the name; and (b) zero-init, which involves zeroing out the first few steps of the ODE solver. Experiments on both text-to-image (Lumina-Next, Stable Diffusion 3, and Flux) and text-to-video (Wan-2.1) generation demonstrate that CFG-Zero* consistently outperforms CFG, highlighting its effectiveness in guiding Flow Matching models. (Code is available at github.com/WeichenFan/CFG-Zero-star)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<h2 style="text-align: center; font-size: 20px; font-weight: bold;">Comparisons of Text-to-Image Generation</h2>
+
 <div class="image-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
     <div id="gallery-container" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;"></div>
     
@@ -156,7 +174,8 @@
     </script>
 </div>
 
-<h1 style="text-align: center;">Comparisons of Text-to-Video Generation</h1>
+
+<h2 style="text-align: center; font-size: 20px; font-weight: bold;">Comparisons of Text-to-Video Generation</h2>
 <div class="video-gallery" style="display: flex; flex-wrap: wrap; gap: 1%; justify-content: space-between;">
     <!-- First video -->
     <div class="video-item" style="width: 49%; vertical-align: top;">
