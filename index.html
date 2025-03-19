@@ -132,6 +132,48 @@
 </section>
 <!-- End paper abstract -->
 
+<section >
+
+</section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-left">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="text-align: center;">Methodology</h2> <!-- 一级标题 -->
+        
+        <p>
+          We analyze the sources of error in flow-matching models and propose a novel approach to mitigate inaccuracies in the predicted velocity. Empirical results show that zeroing out the first ODE solver step in flow-matching models improves sample quality when the model is underfitted. Extensive experiments validate that CFG-Zero* achieves competitive performance in both discrete and continuous conditional generation tasks, demonstrating its effectiveness as an alternative to CFG.
+        </p>
+        <!-- Add an image to support the explanation -->
+        <figure class="image" style="text-align: center; margin: 20px 0;">
+          <img src="static/images/Method1.png" alt="Attention difference comparison graph">
+        </figure>
+
+        
+        <h3 class="title is-4" style="text-align: center;">1. Optimized Scaler</h3> <!-- 一级标题 -->
+        <p>
+          In this section, we introduce an optimized scaling factor to improve Classifier-Free Guidance (CFG) for flow matching models. 
+          When the velocity field is underfitted, CFG may not accurately approximate the ground-truth flow. To address this, we propose 
+          a dynamic scaling parameter <i>s</i> that corrects inaccuracies by reweighting the conditional and unconditional velocity fields. 
+          We derive an upper bound for the error term and minimize it, leading to a more stable and effective guidance mechanism. 
+          Empirical validation on a Gaussian mixture dataset shows that this approach significantly reduces discrepancies between the 
+          estimated and optimal velocity, improving sample quality. The optimized scale parameter can be seamlessly integrated into 
+          existing CFG implementations with minimal computational overhead.
+        </p>
+        <div style="text-align: center; margin: 10px 0;">
+          <img src="static/images/Method3.png" style="width: 70%; height: 70%; display: block; margin: auto;" alt="Attention difference comparison graph">
+    </div>
+
+    <h3 class="title is-4" style="text-align: center;">2. Zero-Init</h3> <!-- 一级标题 -->
+        <p>
+          We analyze the velocity error in synthetic mixed Gaussian and compare the velocity error terms as shown in the Figure below. We notice that when model is underfitted, zero velocity (doing nothing) could help to imrpove the sample quality.
+        </p>
+        <div style="text-align: center; margin: 10px 0;">
+          <img src="static/images/Method2.png" style="width: 70%; height: 70%; display: block; margin: auto;" alt="Attention difference comparison graph">
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- New section: Method -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
@@ -141,7 +183,7 @@
         
         <h3 class="title is-4" style="text-align: center;">Quantitative Evaluation</h3> <!-- 二级标题 -->
         <p>
-          As shown in the Tablem, we evaluate Text-to-Image generation using Lumina-Next, Stable Diffusion 3, Stable Diffusion 3.5, and Flux. The evaluation is based on Aesthetic Score and CLIP Score as key metrics. Results indicate that CFG-Zero⋆ consistently enhances image quality and improves alignment with textual prompts across different models.
+          As shown in the Tablem, we evaluate Text-to-Image generation using Lumina-Next, Stable Diffusion 3, Stable Diffusion 3.5, and Flux. The evaluation is based on Aesthetic Score and CLIP Score as key metrics. Results indicate that CFG-Zero* consistently enhances image quality and improves alignment with textual prompts across different models.
         </p>
         <!-- Add an image to support the explanation -->
         <!-- <figure class="image" style="text-align: center; margin: 10px 0;">
@@ -149,15 +191,13 @@
         </figure> -->
         <div style="text-align: center; margin: 10px 0;">
           <img src="static/images/Tab1.png" style="width: 70%; height: 70%; display: block; margin: auto;" alt="Attention difference comparison graph">
-      </div>
-        <h3 class="title is-4" style="text-align: center;">Qualitative Evaluation</h3> <!-- 二级标题 -->
-        <p>The comparison of our visual results with CogVideoX-2B ( <span style="color: red;">Left: CogVideoX-2B</span>, <span style="color: red;">Right: RepVideo</span>.).</p>
-        <!-- Video carousel -->
-        <!-- End video carousel -->
-
-        <!-- <p>More visual results.</p> -->
-      </div>
     </div>
+    <p>
+      This evaluation, conducted on T2I-CompBench, utilizes Lumina-Next, Stable Diffusion 3, and Stable Diffusion 3.5. Compared to CFG, CFG-Zero* demonstrates consistent improvements across all evaluated aspects.
+    </p>
+    <div style="text-align: center; margin: 10px 0;">
+      <img src="static/images/Tab2.png" style="width: 70%; height: 70%; display: block; margin: auto;" alt="Attention difference comparison graph">
+</div>
   </div>
 </section>
 
