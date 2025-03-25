@@ -122,26 +122,33 @@
   <meta charset="UTF-8">
   <title>Custom Video Player</title>
   <style>
+    /* Optional: just some basic spacing if needed */
     body {
       margin: 0;
-      height: 100vh;
+      font-family: sans-serif;
+      background-color: #000; /* Optional for dark background */
+    }
+
+    .video-wrapper {
       display: flex;
       justify-content: center;
-      align-items: center;
-      background-color: #000; /* optional: makes it look cleaner */
+      padding: 20px; /* Optional spacing around the video */
     }
   </style>
 </head>
 <body>
 
-  <!-- Centered Video element -->
-  <video id="myVideo" width="640" height="360" controls>
-    <source src="static/videos/cfg-zero_pr_page.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <!-- Centered video block -->
+  <div class="video-wrapper">
+    <video id="myVideo" width="640" height="360" controls>
+      <source src="static/videos/cfg-zero_pr_page.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
 </body>
 </html>
+
 
 
 <!-- Paper abstract -->
